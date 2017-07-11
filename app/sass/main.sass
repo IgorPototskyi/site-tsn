@@ -1,0 +1,30 @@
+@import "base/fonts"
+@import "base/libs"
+@import "base/vars"
+@import "base/extend"
+
+*
+	box-sizing: border-box
+
+body
+	font-size: 16px
+	min-width: 990px
+	position: relative
+	line-height: 1.75
+	font-family: $default-font
+	overflow-x: hidden
+	opacity: 1
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+
+.wrapper
+	width: 1400px
+	margin: 0 auto
+
+@import "header"
+@import "navigation"
+@import "news"
+@import "base/media" // Всегда в конце
