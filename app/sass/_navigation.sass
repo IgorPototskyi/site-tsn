@@ -8,6 +8,36 @@
     font-size: 14px
     color: $color-white
     line-height: 1.4
+    z-index: 2
+    transition: all $time ease
+
+    &.top-nav--dark
+        background: $color-black
+
+    &.top-nav--light
+        background: $color-menu-bg
+    
+        .top-nav__date, .top-nav__weather, .top-nav__currency
+            display: none
+
+        .top-nav__search
+            background: url('../img/search/search-black.png') no-repeat 6px 6px
+
+            &:hover
+                background: url('../img/search/search-grey.png') no-repeat 6px 6px
+
+        .top-nav__search--big
+            background: url('../img/search/search-black.png') no-repeat 10px 6px, $color-white
+
+            &:hover
+                background: url('../img/search/search-black.png') no-repeat 10px 6px, $color-white
+
+        .top-nav__share-btn
+            background: url('../img/share/share-black.png') no-repeat 6px 6px
+
+            &:hover
+                background: url('../img/share/share-grey.png') no-repeat 6px 6px
+
 
     &__date, &__weather, &__currency, &__search, &__share
         display: inline-block
@@ -16,7 +46,7 @@
             top: auto
             bottom: auto
 
-    &__date, &__weather, &__currency   
+    &__date, &__weather, &__currency
         border-right: 1px solid $color-grey
 
     &__date
@@ -69,11 +99,12 @@
         width: 36px
         height: 36px
         background: url('../img/search/search-white.png') no-repeat 6px 6px
+        outline: none
         border: none
         font-size: 16px
         border-radius: 8px
         transition: all $time ease
-
+        
         &:hover
             background: url('../img/search/search-grey.png') no-repeat 6px 6px
 
@@ -84,18 +115,31 @@
             background: url('../img/search/search-black.png') no-repeat 10px 6px, $color-white
     
     &__share
-        width: 36px
+        position: relative
         height: 36px
         margin: auto 15px
+        display: flex
+
+        &:after
+            content: ''
+            display: inline-block
+            position: absolute
+            top: 2px
+            left: -15px
+            width: 1px
+            height: 30px
+            background-color: $color-grey
 
     &__share-btn
         display: inline-block
         width: 36px
         height: 36px
-        // margin: auto 0
         border: none
+        outline: none
         background: url('../img/share/share-white.png') no-repeat 6px 6px
         transition: all $time ease
+        margin: auto 0
+        cursor: pointer
 
         &:hover
             background: url('../img/share/share-grey.png') no-repeat 6px 6px
@@ -103,8 +147,44 @@
 
     
 .social
+    margin: auto 0
+    height: 36px
+    font-size: 22px
+    display: none
+
+    &__list
+        padding: 2px 0 0 0
+        margin: 0 10px 0 0
+        height: 100%
+        line-height: 36px
+
     &__item
-        display: none
+        display: inline-block
+        margin: 0 15px
+
+    &__link
+        display: inline-block
+        height: 100%
+        color: inherit
+        transition: color $time ease
+
+        &.social__link--dark
+            color: $color-black
+
+        &.social__link--vk:hover
+            color: $color-vk
+
+        &.social__link--facebook:hover
+            color: $color-facebook
+
+        &.social__link--twitter:hover
+            color: $color-twitter
+
+        &.social__link--odno:hover
+            color: $color-odno
+
+        &.social__link--google:hover
+            color: $color-grey
 
 .main-nav
     width: 100%

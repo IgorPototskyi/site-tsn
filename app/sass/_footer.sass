@@ -1,0 +1,35 @@
+.footer
+    background-color: $color-black
+    padding: 30px 100px 20px
+
+    &__partners
+        display: flex
+        justify-content: space-around
+
+    &__tsn
+        font-size: 48px
+        text-transform: uppercase
+        color: $color-white
+        text-align: center
+        margin: 35px 0
+
+    &__year
+        color: $color-footer-year
+        font-size: 14px
+        text-align: center
+        position: relative
+
+        &:after, &:before
+            content: ''
+            display: block
+            width: 35px
+            height: 1px
+            background-color: $color-footer-year
+            position: absolute
+            top: 7px
+
+        &:before
+            left: 540px
+
+        &:after
+            left: 625px
