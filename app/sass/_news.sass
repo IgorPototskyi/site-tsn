@@ -60,12 +60,75 @@
     &__item-link
         color: $color-news-title
         text-decoration: none
-        // line-height: 1.4
-    
+        
     &__item-cont
         width: 280px
         height: 190px
         overflow: hidden
+        position: relative
+
+        &.news__item-cont--shared
+            .news__item-shade
+                display: block
+
+            .news__item-play
+                display: none
+
+            .news__item-share
+                @extend %cam
+                font-size: 60px
+                width: 56px
+                height: 56px
+                color: $color-white
+
+                &:hover
+                    color: $color-grey
+            
+            .news__item-img
+                filter: blur(5px)
+
+    &__item-shade
+        display: none
+        position: absolute
+        top: 0
+        bottom: 0
+        left: 0
+        right: 0
+        background-color: rgba($color-black, .8)
+
+    &__item-video
+        display: none
+        position: fixed
+        top: 50px
+        // left: 30px
+        width: 364px
+        height: 204px
+        border: 2px solid $color-black
+        z-index: 10
+        background-color: $color-white
+
+        &.active
+            display: block
+
+
+    &__item-play
+        display: inline-block
+        @extend %cam
+        color: rgba($color-white, .8)
+        font-size: 60px
+
+    &__item-share
+        position: absolute
+        bottom: 8px
+        right: 8px
+        font-size: 20px
+        color: rgba($color-white, .8)
+
+    &__item-play, &__item-share
+        transition: color $time ease
+
+        &:hover
+            color: rgba($color-white, 1)
 
     &__item-img
         display: block

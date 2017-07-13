@@ -57,7 +57,7 @@ $(function() {
         }
     });
 
-    // ----- Search & Share-----
+    // ----- Navigation Search & Share-----
 
     var topNavSearch = $('.top-nav__search');
     var soc = $('.social');
@@ -79,6 +79,19 @@ $(function() {
     newsLinks.on('click', function() {
         newsLinks.removeClass('active');
         $(this).addClass('active');
+    })
+
+    // ----- Video -----
+    
+    var newsItemVideo = $('.news__item-video');
+    $('.news__item-share').on('click', function(e) {
+        e.preventDefault(); 
+        newsItemVideo.css('left', topNav.position().left + 20);
+        $(this).parent().toggleClass('news__item-cont--shared');
+        $(this).siblings('.news__item-video').toggleClass('active');
+
+        
+        return false; 
     })
 
 
