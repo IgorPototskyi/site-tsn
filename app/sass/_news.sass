@@ -4,6 +4,9 @@
     background-color: $color-white
     // text-shadow: 0 1px $color-grey
 
+    &--second
+        padding-bottom: 70px
+
     &__nav
         border-bottom: 1px solid $color-grey
                 
@@ -67,14 +70,18 @@
         overflow: hidden
         position: relative
 
+        &.news__item-cont--video
+            .news__icon-play, .news__icon-share
+                display: inline-block
+
         &.news__item-cont--shared
             .news__item-shade
                 display: block
 
-            .news__item-play
+            .news__icon-play
                 display: none
 
-            .news__item-share
+            .news__icon-share
                 @extend %cam
                 font-size: 60px
                 width: 56px
@@ -96,35 +103,21 @@
         right: 0
         background-color: rgba($color-black, .8)
 
-    &__item-video
+    &__icon-play
         display: none
-        position: fixed
-        top: 50px
-        // left: 30px
-        width: 364px
-        height: 204px
-        border: 2px solid $color-black
-        z-index: 10
-        background-color: $color-white
-
-        &.active
-            display: block
-
-
-    &__item-play
-        display: inline-block
         @extend %cam
-        color: rgba($color-white, .8)
+        color: rgba($color-white, .6)
         font-size: 60px
 
-    &__item-share
+    &__icon-share
+        display: none
         position: absolute
         bottom: 8px
         right: 8px
         font-size: 20px
-        color: rgba($color-white, .8)
+        color: rgba($color-white, .6)
 
-    &__item-play, &__item-share
+    &__icon-play, &__icon-share
         transition: color $time ease
 
         &:hover
@@ -137,7 +130,7 @@
         transition: transform $time ease
 
         &:hover
-            transform: scale(1.1)
+            transform: scale(1.05)
 
     &__item-title
         font-weight: 400
@@ -174,6 +167,45 @@
 
     &__item-datetime
         color: $color-grey
+
+    &__video
+        display: none
+        position: fixed
+        top: 50px
+        width: 364px
+        height: 204px
+        border: 2px solid $color-black
+        z-index: 10
+        background-color: $color-menu-lady
+        overflow: hidden
+
+        &.active
+            display: block
+
+        .news__item-img
+            width: 100%
+            height: auto
+
+            &:hover
+                transform: none
+
+    &__video-play
+        @extend %cam
+        font-size: 24px
+    
+    &__video-close
+        position: absolute
+        top: 6px
+        right: 8px
+        font-size: 20px
+
+    &__video-play, &__video-close
+        color: $color-white
+        transition: color $time ease
+
+        &:hover
+            color: rgba($color-white, .6)
+    
 
     
 

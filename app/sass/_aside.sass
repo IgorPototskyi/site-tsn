@@ -3,20 +3,39 @@
     top: 200px
     right: 100px
     width: 330px
-    background-color: $color-aside-bg
+    font-size: 0
 
-    &:after
-        position: absolute
-        content: ''
-        top: 0
-        right: 0
-        border-top: 20px solid transparent
-        border-right: 20px solid transparent
+    &__content
+        width: 100%
+        background-color: $color-aside-bg
+        font-size: 16px
+
+    &__block
+        display: inline-block
+        width: 310px
+        height: 20px
+        
+        background-color: $color-aside-bg
+
+    &__block2
+        display: inline-block
+        border-top: 10px solid transparent
+        border-right: 10px solid transparent
+        border-bottom: 10px solid $color-aside-bg
+        border-left: 10px solid $color-aside-bg
+
+    // &:after
+    //     position: absolute
+    //     content: ''
+    //     top: 0
+    //     right: 0
+    //     border-top: 20px solid transparent
+    //     border-right: 20px solid transparent
 
     &__title
-        font-weight: 700
+        font-weight: 600
         font-size: 24px
-        margin: 15px 0 0 20px
+        margin: 0 0 0 20px
         color: $color-black
 
     &__item
