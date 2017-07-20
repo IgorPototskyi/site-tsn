@@ -3,11 +3,42 @@
     padding: 20px 430px 0 0
     background-color: $color-white
 
-    .banner
+    .banner-cont
         display: block
         position: relative
         width: 730px
         height: 92px
         overflow: hidden
-        border: 1px solid #b27f7f
         margin: 0 auto
+
+    .banner-iframe
+        display: block
+        // position: relative
+        // width: 730px
+        // height: 92px
+        // overflow: hidden
+        border: 1px solid #b27f7f
+        // margin: 0 auto
+        width: 100%
+        height: 100%
+
+    .banner-img
+        position: absolute
+        width: 5px
+        height: 5px
+
+        &.banner-img--lt
+            top: 0
+            left: 0
+
+        &.banner-img--rt
+            top: 0
+            right: 0
+
+        &.banner-img--lb
+            bottom: 0
+            left: 0
+
+        &.banner-img--rb
+            bottom: 0
+            right: 0

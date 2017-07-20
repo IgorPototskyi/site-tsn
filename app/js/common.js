@@ -11,7 +11,6 @@ $(function() {
     navItems.eq(currentPos).addClass('active');
     
     navItems.on('mouseenter', function() {
-
         var sliderPos = $(this).attr("data-link");
 
         if (sliderPos != currentPos) {
@@ -116,5 +115,63 @@ $(function() {
         newsItemCont.removeClass('news__item-cont--shared');
     });
 
+    // ----- Masonry Gallery -----
 
+    var photos = [];
+    initGallery();
+    
+    function initGallery() {
+        var $photosCont = $('<div>', {class : "photos__cont"}).appendTo(".photos");
+
+        $.getJSON('../json/photos.json', function(data) {
+            photos = data.slice();
+            if (photos.length) {
+                renderPhotos(photos, $photosCont);
+
+                $photosCont.masonry({
+                    itemSelector: '.photos__item',
+                    gutter: '.photos__gutter-sizer',
+                    columnWidth: '.photos__item-sizer',
+                    percentPosition: true,
+                });
+            }
+		});
+    }
+
+    function renderPhotos(photos, $photosCont) {
+        $('<div>').addClass('photos__item-sizer').appendTo($photosCont);
+        $('<div>').addClass('photos__gutter-sizer').appendTo($photosCont);
+        var $item;
+
+        photos.forEach(function(element) {
+            $item = $('<div>').addClass('photos__item')
+                              .css({"background-image":"url(" + element.photosUrl[0] + ")",
+                                    "background-position":element.photoPosition});
+
+            if (element.doubleWidth === "true") $item.addClass('photos__item--width2');
+            if (element.doubleHeight === "true") $item.addClass('photos__item--height2');
+
+            if (element.doubleHeight === "true" || element.doubleWidth === "true") {
+                var $descr = element.description;
+                var $photosDescr = $('<div>').addClass('photos__descr');
+                var $photosTitle = $('<div>').addClass('photos__title');
+
+                if ($descr.length > 50) $descr = $descr.slice(0, 51) + "...";
+
+                $photosTitle.html($descr).appendTo($photosDescr);
+                $photosDescr.appendTo($item);
+            }
+
+            $('<i>').addClass('fa fa-share-square-o photos__open').appendTo($item);
+            $item.appendTo($photosCont);
+        }, this);
+    }
+   
+    $('body').on('click', '.photos__open', function() {
+        // TODO
+    });
+    
 });
+
+
+
