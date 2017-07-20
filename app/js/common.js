@@ -56,7 +56,7 @@ $(function() {
         }
     });
 
-    // ----- Navigation Search & Share-----
+    // ----- Navigation search & share-----
 
     var topNavSearch = $('.top-nav__search');
     var soc = $('.social');
@@ -80,19 +80,91 @@ $(function() {
         $(this).addClass('active');
     });
 
-    // ----- Video -----
+    // ----- News content
 
-    $('.news__item-shade').clone().appendTo('.news__item-cont--video');
-    $('.news__icon-play').clone().appendTo('.news__item-cont--video');
-    $('.news__icon-share').clone().appendTo('.news__item-cont--video');
+    initNews();
 
-    var newsVideo = $('.news__video');
-    var newsItemCont = $('.news__item-cont');
+    function initNews() {
+        var $newsCont = $('<div>', {class : "news__container"}).appendTo(".news");
 
-    newsVideo.css('left', topNav.position().left + 20);
-    
-    $('.news__icon-share').on('click', function(e) {
+        $.getJSON('../json/news.json', function(data) {
+            var news = data.slice();
+            if (news.length) {
+                renderNews(news, $newsCont);
+            }
+        });
+    }
+
+    function renderNews(news, $newsCont) {
+        var $item,
+            $itemCont,
+            $itemLink,
+            $itemDescr,
+            $itemSection;
+
+        news.forEach(function(element) {
+            $item = $('<div>').addClass('news__item');
+            $itemLink = $('<a>').addClass('news__item-link').attr('href', element.link);
+            $itemCont = $('<div>').addClass('news__item-cont');
+            $itemSection = $('<a>').addClass('news__item-section')
+                                   .attr('href', element.sectionLink)
+                                   .html(element.section);
+
+            $('<img>').addClass('news__item-img')
+                      .attr({'src': element.imageUrl, 
+                             'alt': element.alt})
+                      .appendTo($itemCont);
+
+            if (element.videoSrc) {
+                $itemCont.addClass('news__item-cont--video');
+                $('<div>').addClass('news__item-shade').appendTo($itemCont);
+                $('<i>').addClass('fa fa-play-circle-o news__icon-play').appendTo($itemCont);
+                $('<i>').addClass('fa fa-share-square-o news__icon-share').appendTo($itemCont);
+            }
+
+            $itemCont.appendTo($itemLink);
+            $('<h4>').addClass('news__item-title').text(element.title).appendTo($itemLink);
+
+            $itemLink.appendTo($item);
+
+            $itemDescr = $('<div>').addClass('news__item-descr');
+
+            $('<span>').addClass('news__item-views')
+                       .html('<i class="fa fa-eye"></i>' + element.views)
+                       .appendTo($itemDescr);
+            
+            $('<span>').addClass('news__item-comments')
+                       .html('<i class="fa fa-comment-o"></i>' + element.comments)
+                       .appendTo($itemDescr);
+
+            switch (element.section) {
+                case "Світ" : $itemSection.addClass('section-world'); break;
+                case "Україна" : $itemSection.addClass('section-ukr'); break;
+                case "Гламур" : $itemSection.addClass('section-glam'); break;
+                case "Гроші" : $itemSection.addClass('section-money'); break;
+            }
+
+            $('<span>').addClass('news__item-datetime')
+                       .html(element.datetime)
+                       .appendTo($itemDescr);
+
+            $itemDescr.appendTo($item);
+            $item.appendTo($newsCont);
+
+        }, this);
+
+        var $newsVideo = $('<div>').addClass('news__video').appendTo($newsCont);
+        $('<i>').addClass('fa fa-play news__video-play').appendTo($newsVideo);
+        $('<i>').addClass('fa fa-times news__video-close').appendTo($newsVideo);
+        
+    }
+
+    $('.news__video').css('left', topNav.position().left + 20);
+
+    $('body').on('click', '.news__icon-share', function(e) {
         e.preventDefault(); 
+        var newsVideo = $('.news__video');
+        var newsItemCont = $('.news__item-cont');
 
         if (!$(this).parent().hasClass('news__item-cont--shared')) {
             newsVideo.removeClass('active');
@@ -110,12 +182,12 @@ $(function() {
         return false; 
     });
 
-    $('.news__video-close').on('click', function(e) {
-        newsVideo.removeClass('active');
-        newsItemCont.removeClass('news__item-cont--shared');
+    $('body').on('click', '.news__video-close', function(e) {
+        $('.news__video').removeClass('active');
+        $('.news__item-cont').removeClass('news__item-cont--shared');
     });
 
-    // ----- Masonry Gallery -----
+    // ----- Masonry gallery -----
 
     var photos = [];
     initGallery();
@@ -170,6 +242,87 @@ $(function() {
     $('body').on('click', '.photos__open', function() {
         // TODO
     });
+
+    // ----- Aside content -----
+
+    initAside();
+
+    function initAside() {
+        var $asideCont = $('<div>', {class : "aside__content"}).appendTo(".aside");
+
+        $.getJSON('../json/aside.json', function(data) {
+            var news = data.slice();
+            if (news.length) {
+                renderAside(news, $asideCont);
+            }
+        });
+    }
+
+    function renderAside(news, $asideCont) {
+        $('<h2>').addClass('aside__title')
+                 .html('Останні новини')
+                 .appendTo($asideCont);
+
+        var $item,
+            $itemLink;
+
+        news.forEach(function(element, i) {
+            
+            if (element.banner === "true") {
+                var $asideBanner = $('<div>').addClass('aside__banner');
+                var $asideBannerLink = $('<a>').addClass('aside__banner-link')
+                                               .attr({"href" : element.link});
+                
+                $('<img>').attr({"src" : element.imageUrl, "alt" : element.alt })
+                          .appendTo($asideBannerLink);
+
+                $asideBannerLink.appendTo($asideBanner);
+                $asideBanner.appendTo($asideCont);
+               
+            } else {
+                $item  = $('<div>').addClass('aside__item');
+                $itemLink = $('<a>').addClass('aside__link')
+                                    .attr('href', element.link);
+
+                if (element.isImportant === "true") $itemLink.addClass('aside__link--imp');
+
+                if (element.imageUrl) {
+                    var $imgCont = $('<div>').addClass('aside__img-cont');
+                    $('<img>').addClass('aside__img')
+                            .attr({"src" : element.imageUrl, "alt" : element.alt})
+                            .appendTo($imgCont);
+
+                    if (element.videoTime) {
+                        var $asideVideo = $('<div>').addClass('aside__video')
+                                                    .html('<i class="fa fa-play-circle-o"></i>Видео')
+                                                    .appendTo($imgCont);
+
+                        $('<span>').addClass('aside__video-time')
+                                .html(element.videoTime)
+                                .appendTo($asideVideo);
+                    }
+                    $imgCont.appendTo($itemLink)
+                }
+
+                $('<span>').html(element.title).appendTo($itemLink);
+                $itemLink.appendTo($item);
+
+                $('<div>').addClass('aside__datetime')
+                        .html(element.datetime)
+                        .appendTo($item);
+
+                $item.appendTo($asideCont);
+            }
+            
+        }, this);
+
+        var $asideLoad = $('<div>').addClass('aside__load').appendTo($asideCont);
+        $('<a>').addClass('aside__load-link')
+                .attr('href' , '#')
+                .html('Завантажити ще')
+                .appendTo($asideLoad);
+        $('<i>').addClass('fa fa-download').appendTo($asideLoad);
+    }
     
 });
 

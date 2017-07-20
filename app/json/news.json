@@ -1,0 +1,74 @@
+[
+    {
+        "link":"#",
+        "imageUrl":"../img/news/news1.jpg",
+        "alt":"Вибух у Афганістані",
+        "title":"У столиці Афганістану стався потужний вибух - понад 90 людей поранені, є загиблі",
+        "views":"3015",
+        "comments":"31",
+        "section":"Світ",
+        "sectionLink":"#",
+        "datetime":"28 травня, 2017 08:51",
+        "videoSrc":""
+    },
+    {
+        "link":"#",
+        "imageUrl":"../img/news/news2.jpg",
+        "alt":"Найгірші дороги",
+        "title":"В уряді назвали п'ять областей України з найгіршими дорогами",
+        "views":"1025",
+        "comments":"2",
+        "section":"Україна",
+        "sectionLink":"#",
+        "datetime":"28 травня, 2017 07:23",
+        "videoSrc":""
+    },
+    {
+        "link":"#",
+        "imageUrl":"../img/news/news3.jpg",
+        "alt":"День народження Білозір",
+        "title":"Зіркові гості куми Порошенка. Хто вітав Білозір із днем народження",
+        "views":"2005",
+        "comments":"8",
+        "section":"Гламур",
+        "sectionLink":"#",
+        "datetime":"27 травня, 2017 22:18",
+        "videoSrc":"#"
+    },
+    {
+        "link":"#",
+        "imageUrl":"../img/news/news4.jpg",
+        "alt":"НБУ",
+        "title":"НБУ оголосив про зняття трьох тративних обмежень на валютному ринку",
+        "views":"3015",
+        "comments":"31",
+        "section":"Гроші",
+        "sectionLink":"#",
+        "datetime":"28 травня, 2017 08:51",
+        "videoSrc":""
+    },
+    {
+        "link":"#",
+        "imageUrl":"../img/news/news5.jpg",
+        "alt":"Флінн",
+        "title":"Флінн погодився передати до Сенату документи в рамках розслідування щодо втручання РФ у вибори ...",
+        "views":"2005",
+        "comments":"8",
+        "section":"Світ",
+        "sectionLink":"#",
+        "datetime":"27 травня, 2017 22:18",
+        "videoSrc":"#"
+    },
+    {
+        "link":"#",
+        "imageUrl":"../img/news/news6.jpg",
+        "alt":"Путін",
+        "title":"Жодних доказів застосування Асадом хімічної зброї немає — Путін",
+        "views":"3015",
+        "comments":"31",
+        "section":"Світ",
+        "sectionLink":"#",
+        "datetime":"28 травня, 2017 21:45",
+        "videoSrc":""
+    }
+]
