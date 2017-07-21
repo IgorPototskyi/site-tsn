@@ -216,6 +216,7 @@ $(function() {
                 case "Гроші" : $itemSection.addClass('section-money'); break;
             }
 
+            $itemSection.appendTo($itemDescr);
             $('<span>').addClass('news__item-datetime')
                        .html(element.datetime)
                        .appendTo($itemDescr);
@@ -445,8 +446,9 @@ $(function() {
 // ----- Preloader -----
 
 $(window).on('load', function() {
-    TweenMax.to($('.preloader__title'), 1.0, {opacity:1});
-    TweenMax.to($('.preloader'), 1.0, {display:'none', delay:1.0});
+    TweenMax.to($('.preloader__title'), 1.0, {opacity: 1});
+    TweenMax.to($('.preloader'), 1.0, {opacity: 0, delay: 1.0});
+    TweenMax.to($('.preloader'), 0.1, {display:'none', delay:2.0});
 })
 
 

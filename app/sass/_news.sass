@@ -111,7 +111,7 @@
     &__icon-play
         display: none
         @extend %cam
-        color: rgba($color-white, .6)
+        color: rgba($color-white, .8)
         font-size: 60px
 
     &__icon-share
@@ -120,7 +120,7 @@
         bottom: 8px
         right: 8px
         font-size: 20px
-        color: rgba($color-white, .6)
+        color: rgba($color-white, .8)
 
     &__icon-play, &__icon-share
         transition: color $time ease
@@ -157,6 +157,10 @@
 
     &__item-section
         text-decoration: none
+        transition: text-decoration $time ease
+
+        &:hover
+            text-decoration: underline
 
         &.section-world
             color: $color-menu-world
@@ -172,6 +176,7 @@
 
     &__item-datetime
         color: $color-grey
+        margin-left: 5px
 
     &__video
         display: none
