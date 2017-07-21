@@ -284,7 +284,7 @@ $(function() {
         $('<div>').addClass('photos__gutter-sizer').appendTo($photosCont);
         var $item;
 
-        photos.forEach(function(element) {
+        photos.forEach(function(element, i) {
             $item = $('<div>').addClass('photos__item')
                               .css({"background-image":"url(" + element.photosUrl[0] + ")",
                                     "background-position":element.photoPosition});
@@ -304,12 +304,54 @@ $(function() {
             }
 
             $('<i>').addClass('fa fa-share-square-o photos__open').appendTo($item);
-            $item.appendTo($photosCont);
+            $item.attr("data-pos", i).appendTo($photosCont);
         }, this);
     }
    
     $('body').on('click', '.photos__open', function() {
-        // TODO
+        var position = $(this).parent().attr('data-pos');
+        var photo = photos[position];
+        var top = $('body').scrollTop();
+
+        var $gallery = $('<div>').addClass('gallery')
+                                 .css('padding-top', top)
+                                 .appendTo('.photos');
+
+        $('<h2>').addClass('gallery__title')
+                 .html(photo.description)
+                 .appendTo($gallery);
+
+        var $galleryCont = $('<div>').addClass('fotorama gallery__cont')
+                                     .attr({"data-width" : "616",
+                                            "data-height" : "412",
+                                            "data-nav" : "thumbs",
+                                            "data-thumbwidth" : "90",
+                                            "data-thumbheight" : "60",
+                                            "data-thumbborderwidth" : "1",
+                                            "data-thumbbordercolor" : "#fff",
+                                            "data-transition" : "crossfade",
+                                            "data-auto" : "false"})
+                                     .appendTo($gallery);
+
+        photo.photosUrl.forEach(function(element) {
+            var $galleryLink = $('<a>').addClass('gallery__link')
+                                       .attr('href', element)
+                                       .appendTo($galleryCont)
+
+            $('<img>').addClass('gallery__img')
+                      .attr("src", element)
+                      .appendTo($galleryLink);
+        }, this);
+
+        $('<i>').addClass('fa fa-times gallery__close')
+                .css('top', top + 20)
+                .appendTo($gallery);
+        
+        var $fotoramaDiv = $('.fotorama').fotorama();
+    });
+
+    $('body').on('click', '.gallery__close', function() {
+        $('.gallery').remove();
     });
 
     // ----- Aside content -----

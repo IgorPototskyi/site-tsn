@@ -85,6 +85,76 @@
         display: inline-block
         margin: auto
 
+.gallery
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    z-index: 10
+    background-color: $color-black
+
+    &__title
+        width: 700px
+        margin-left: 100px
+        color: $color-white
+        font-weight: 400
+        font-size: 24px
+
+    &__cont
+        // width: 616px
+        // height: 412px
+        margin: 0 auto
+        background-color: $color-black
+        overflow: hidden
+
+    &__close
+        position: absolute
+        right: 10px
+        font-size: 24px
+        color: $color-white
+        transition: color $time ease
+
+        &:hover
+            color: $color-grey
+        
+
+.fotorama
+    &__wrap
+        margin: 0 auto
+
+    &__nav-wrap
+        margin-top: 15px
+
+    &__nav__frame
+        opacity: .5
+        transition: opacity $time ease
+
+        &:hover
+            opacity: .8
+
+        &.fotorama__active
+            opacity: 1
+
+    &__thumb-border
+        border-color: $color-white
+
+
+    // &__link
+    //     display: block
+        // width: 100%
+        // height: 100%
+
+    // &__img
+    //     display: block
+    //     margin: 0 auto
+    //     height: 100%
+
+    
+        
+
+
+
     
 
 
