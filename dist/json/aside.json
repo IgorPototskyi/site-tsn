@@ -21,7 +21,7 @@
     },
     {
         "link":"#",
-        "imageUrl":"../img/aside/aside-banner.jpg",
+        "imageUrl":"img/aside/aside-banner.jpg",
         "alt":"global warming",
         "title":"",
         "datetime":"",
@@ -41,7 +41,7 @@
     },
     {
         "link":"#",
-        "imageUrl":"../img/aside/trump.jpg",
+        "imageUrl":"img/aside/trump.jpg",
         "alt":"Donald Trump",
         "title":"Вона робить це на зло: психолог проаналізував мову тіла Меланії Трамп і розповів, що не так з її сумом",
         "datetime":"29 Травня, 2017 16:21",
@@ -81,7 +81,7 @@
     },
     {
         "link":"#",
-        "imageUrl":"../img/aside/russian-police.jpg",
+        "imageUrl":"img/aside/russian-police.jpg",
         "alt":"Russian Police",
         "title":"Це якийсь перевернутий світ: російський журналіст шокований затриманням школяра за читання \"Гамлета\" на ...",
         "datetime":"29 Травня, 2017 15:03",
@@ -101,7 +101,7 @@
     },
     {
         "link":"#",
-        "imageUrl":"../img/aside/trump.jpg",
+        "imageUrl":"img/aside/trump.jpg",
         "alt":"Donald Trump",
         "title":"Вона робить це на зло: психолог проаналізував мову тіла Меланії Трамп і розповів, що не так з її сумом",
         "datetime":"29 Травня, 2017 16:21",
@@ -141,7 +141,7 @@
     },
     {
         "link":"#",
-        "imageUrl":"../img/aside/russian-police.jpg",
+        "imageUrl":"img/aside/russian-police.jpg",
         "alt":"Russian Police",
         "title":"Це якийсь перевернутий світ: російський журналіст шокований затриманням школяра за читання \"Гамлета\" на ...",
         "datetime":"29 Травня, 2017 15:03",
