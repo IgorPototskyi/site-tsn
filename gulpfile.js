@@ -39,6 +39,7 @@ gulp.task('js', ['common-js'], function() {
 		// 'app/libs/fotorama/fotorama.js',
 		// 'app/libs/slick/slick.min.js',
 		'app/libs/masonry/masonry.min.js',
+		'app/libs/greensock/TweenMax.min.js',
 		'app/js/common.min.js', // Всегда в конце
 		])
 	.pipe(concat('scripts.min.js'))

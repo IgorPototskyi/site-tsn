@@ -1,0 +1,22 @@
+.preloader
+    position: fixed
+    top: 0
+    bottom: 0
+    right: 0
+    left: 0
+    z-index: 100
+    background-color: $color-black
+
+    &__inner
+        @extend %cam
+        color: $color-white
+        font-size: 60px
+        text-align: center
+    
+    &__tsn
+        height: 68px
+
+    &__title
+        opacity: 0
+        font-size: 40px
+        text-transform: uppercase

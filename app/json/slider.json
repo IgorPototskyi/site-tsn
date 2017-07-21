@@ -1,0 +1,47 @@
+[
+    {
+        "link":"#",
+        "imageUrl":"",
+        "title":"Внаслідок потужного вибуху підземної труби у Києві ушкоджені машини та будівлі",
+        "datetime":"29 травня, 2017 14:05",
+        "videoSrc":"http://player.hosting.1plus1.ua/tests/fe/v/TopNewsVideo.mp4",
+        "videoType":"video/mp4",
+        "section":"ТСН День"
+    },
+    {
+        "link":"#",
+        "imageUrl":"../img/slider/slide2.jpg",
+        "title":"Макрон пригрозив Путіну посиленням санкцій у разі ескалації на Донбасі",
+        "datetime":"29 травня, 2017 19:00",
+        "videoSrc":"",
+        "videoType":"",
+        "section":"Світ"
+    },
+    {
+        "link":"#",
+        "imageUrl":"../img/slider/slide3.jpg",
+        "title":"В Україні курить чверть дорослих: як відмовитися від згубної звички яка вбиваэ понад 6 ...",
+        "datetime":"29 травня, 2017 12:47",
+        "videoSrc":"",
+        "videoType":"",
+        "section":"Світ"
+    },
+    {
+        "link":"#",
+        "imageUrl":"../img/slider/slide4.jpg",
+        "title":"В останній день весни Україну накриють потужні зливи з грозами та градом",
+        "datetime":"29 травня, 2017 12:11",
+        "videoSrc":"",
+        "videoType":"",
+        "section":"Світ"
+    },
+    {
+        "link":"#",
+        "imageUrl":"../img/slider/slide5.jpg",
+        "title":"Убитий на Позняках чоловік був виконувачем обов'язків директора «Укрспирту»",
+        "datetime":"29 травня, 2017 12:11",
+        "videoSrc":"",
+        "videoType":"",
+        "section":"Світ"
+    }
+]

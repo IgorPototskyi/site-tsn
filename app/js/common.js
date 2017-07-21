@@ -1,30 +1,99 @@
 $(function() {
 
+    animatePreloader();
+
+    function animatePreloader() {
+        TweenMax.to('.preloader__tsn', 1.0, {'backgroundColor' : "#cc0000"});
+    }
+
     // ----- Slider ----- 
 
-    var sliders = $(".slider__slide");
-    var navItems = $('.slider__nav-item');
     var currentPos = 0;
+    initSlider();
 
-    sliders.hide();
-    sliders.eq(0).show();
-    navItems.eq(currentPos).addClass('active');
-    
-    navItems.on('mouseenter', function() {
+    function initSlider() {
+        var $sliderCont = $('<div>').addClass('slider').appendTo('.header');
+
+        $.getJSON('../json/slider.json', function(data) {
+            var slides = data.slice();
+            if (slides.length) {
+                parseSlides(slides, $sliderCont);
+                renderSlides($sliderCont);
+            }
+        });
+    }
+
+    function parseSlides(slides, $sliderCont) {
+        var $item,
+            $itemLink,
+            $sliderNav = $('<ul>').addClass('slider__nav');
+
+        slides.forEach(function(element, i) {
+            $item = $('<div>').addClass('slider__slide');
+
+            $itemLink = $('<a>').addClass('slider__link')
+                                .attr({'href' : element.link})
+                                .appendTo($item);
+
+            if (element.videoSrc) {
+                var $itemVideo = $('<video>').addClass('slider__video')
+                                             .attr({"autoplay" : true, "loop" : true, "muted" : true})
+                                             .appendTo($itemLink);
+
+                $('<source>').attr({"src" : element.videoSrc, "type" : element.videoType})
+                             .appendTo($itemVideo);
+            } else $itemLink.css({"background-image" : "url('" + element.imageUrl + "')"});
+            
+            $('<h3>').addClass('slider__title')
+                     .html(element.title)
+                     .appendTo($itemLink);
+
+            var $itemDate = $('<div>').addClass('slider__date').appendTo($itemLink);
+            var $itemSection = $('<span>').addClass('slider__section')
+                                          .html(element.section)
+                                          .appendTo($itemDate);
+
+            if (element.section === "ТСН День") $itemSection.addClass('slider__section--imp');
+
+            $('<span>').addClass('slider__datetime')
+                       .html(element.datetime)
+                       .appendTo($itemDate);
+
+            $item.appendTo($sliderCont);
+
+            $('<li>').addClass('slider__nav-item')
+                     .attr({"data-link" : i})
+                     .appendTo($sliderNav);
+        }, this);
+
+        $sliderNav.appendTo($sliderCont);
+    }
+
+    function renderSlides($sliderCont) {
+        $slides = $sliderCont.children('.slider__slide');
+        var navItems = $('.slider__nav-item');
+
+        $slides.hide();
+        $slides.eq(currentPos).show();
+        navItems.eq(currentPos).addClass('active');
+    }
+
+    $('body').on('mouseenter', '.slider__nav-item', function(e) {
         var sliderPos = $(this).attr("data-link");
 
         if (sliderPos != currentPos) {
-            
-            navItems.eq(currentPos).removeClass('active');
+            $('.slider__nav-item').eq(currentPos).removeClass('active');
             $(this).addClass('active');
 
-            sliders.eq(currentPos).animate({ height : 'hide' });
-            sliders.eq(sliderPos).animate({ height : 'show' });
+            $slides = $('.slider__slide');
+            $slides.eq(currentPos).animate({ height : 'hide' });
+            $slides.eq(sliderPos).animate({ height : 'show' });
 
-            var video = sliders.eq(sliderPos).find(".slider__video");
+            var video = $slides.eq(sliderPos).find(".slider__video");
+
             if (video.length > 0)  video.get(0).currentTime = 0;
-
             currentPos = sliderPos;
+            
         }
     });
 
@@ -325,6 +394,13 @@ $(function() {
     }
     
 });
+
+// ----- Preloader -----
+
+$(window).on('load', function() {
+    TweenMax.to($('.preloader__title'), 1.0, {opacity:1});
+    TweenMax.to($('.preloader'), 1.0, {display:'none', delay:1.0});
+})
 
 
 
