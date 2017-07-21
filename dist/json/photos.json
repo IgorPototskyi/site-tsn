@@ -1,0 +1,72 @@
+[
+    {
+        "description":"Вогонь, водомети і сльозогінний газ: у Венесуелі в ході протестів 250 осіб отримали поранення",
+        "photosUrl":["../img/photos/photo1.jpg", "../img/photos/photo1.jpg", "../img/photos/photo1.jpg"],
+        "doubleWidth":"true",
+        "doubleHeight":"false",
+        "photoPosition":"50% 75%"
+    },
+    {
+        "description":"Танцював із Саудами і штурхав колег із НАТО",
+        "photosUrl":["../img/photos/photo2.jpg", "../img/photos/photo2.jpg", "../img/photos/photo2.jpg"],
+        "doubleWidth":"false",
+        "doubleHeight":"true",
+        "photoPosition":"50% 20%"
+    },
+    {
+        "description":"Танцював із Саудами і штурхав колег із НАТО",
+        "photosUrl":["../img/photos/photo3.jpg", "../img/photos/photo3.jpg", "../img/photos/photo3.jpg"],
+        "doubleWidth":"false",
+        "doubleHeight":"false",
+        "photoPosition":"50% 75%"
+    },
+    {
+        "description":"Танцював із Саудами і штурхав колег із НАТО",
+        "photosUrl":["../img/photos/photo4.jpg", "../img/photos/photo4.jpg", "../img/photos/photo4.jpg"],
+        "doubleWidth":"false",
+        "doubleHeight":"true",
+        "photoPosition":"50% 75%"
+    },
+    {
+        "description":"Танцював із Саудами і штурхав колег із НАТО",
+        "photosUrl":["../img/photos/photo5.jpg", "../img/photos/photo5.jpg", "../img/photos/photo5.jpg"],
+        "doubleWidth":"false",
+        "doubleHeight":"false",
+        "photoPosition":"50% 60%"
+    },
+    {
+        "description":"Танцював із Саудами і штурхав колег із НАТО",
+        "photosUrl":["../img/photos/photo6.jpg", "../img/photos/photo6.jpg", "../img/photos/photo6.jpg"],
+        "doubleWidth":"false",
+        "doubleHeight":"true",
+        "photoPosition":"45% 40%"
+    },
+    {
+        "description":"Танцював із Саудами і штурхав колег із НАТО",
+        "photosUrl":["../img/photos/photo7.jpg", "../img/photos/photo7.jpg", "../img/photos/photo7.jpg"],
+        "doubleWidth":"false",
+        "doubleHeight":"false",
+        "photoPosition":"50% 20%"
+    },
+    {
+        "description":"Танцював із Саудами і штурхав колег із НАТО",
+        "photosUrl":["../img/photos/photo8.jpg", "../img/photos/photo8.jpg", "../img/photos/photo8.jpg"],
+        "doubleWidth":"false",
+        "doubleHeight":"false",
+        "photoPosition":"50% 75%"
+    },
+    {
+        "description":"Танцював із Саудами і штурхав колег із НАТО",
+        "photosUrl":["../img/photos/photo9.jpg", "../img/photos/photo9.jpg", "../img/photos/photo9.jpg"],
+        "doubleWidth":"false",
+        "doubleHeight":"false",
+        "photoPosition":"60% 10%"
+    },
+    {
+        "description":"Танцював із Саудами і штурхав колег із НАТО",
+        "photosUrl":["../img/photos/photo10.jpg", "../img/photos/photo10.jpg", "../img/photos/photo10.jpg"],
+        "doubleWidth":"true",
+        "doubleHeight":"false",
+        "photoPosition":"60% 40%"
+    }
+]

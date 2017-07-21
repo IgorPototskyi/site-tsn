@@ -14,7 +14,9 @@ $(function() {
     function initSlider() {
         var $sliderCont = $('<div>').addClass('slider').appendTo('.header');
 
-        $.getJSON('../json/slider.json', function(data) {
+        // $.getJSON('../json/slider.json', function(data) {
+        $.getJSON('json/slider.json', function(data) {
+            
             var slides = data.slice();
             if (slides.length) {
                 parseSlides(slides, $sliderCont);
@@ -156,7 +158,8 @@ $(function() {
     function initNews() {
         var $newsCont = $('<div>', {class : "news__container"}).appendTo(".news");
 
-        $.getJSON('../json/news.json', function(data) {
+        $.getJSON('json/news.json', function(data) {
+        // $.getJSON('../json/news.json', function(data) {
             var news = data.slice();
             if (news.length) {
                 renderNews(news, $newsCont);
@@ -264,7 +267,8 @@ $(function() {
     function initGallery() {
         var $photosCont = $('<div>', {class : "photos__cont"}).appendTo(".photos");
 
-        $.getJSON('../json/photos.json', function(data) {
+        $.getJSON('json/photos.json', function(data) {
+        // $.getJSON('../json/photos.json', function(data) {
             photos = data.slice();
             if (photos.length) {
                 renderPhotos(photos, $photosCont);
@@ -361,7 +365,8 @@ $(function() {
     function initAside() {
         var $asideCont = $('<div>', {class : "aside__content"}).appendTo(".aside");
 
-        $.getJSON('../json/aside.json', function(data) {
+        $.getJSON('json/aside.json', function(data) {
+        // $.getJSON('../json/aside.json', function(data) {
             var news = data.slice();
             if (news.length) {
                 renderAside(news, $asideCont);
