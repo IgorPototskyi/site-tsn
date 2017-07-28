@@ -10,7 +10,6 @@ var gulp           = require('gulp'),
 		imagemin       = require('gulp-imagemin'),
 		cache          = require('gulp-cache'),
 		autoprefixer   = require('gulp-autoprefixer'),
-		// ftp            = require('vinyl-ftp'),
 		notify         = require("gulp-notify"),
 		rigger         = require("gulp-rigger");
 
@@ -51,9 +50,7 @@ gulp.task('browser-sync', function() {
 		server: {
 			baseDir: 'app'
 		},
-		notify: false,
-		// tunnel: true,
-		// tunnel: "projectmane", //Demonstration page: http://projectmane.localtunnel.me
+		notify: false
 	});
 });
 
@@ -102,6 +99,7 @@ gulp.task('build', ['removedist', 'imagemin', 'html', 'sass', 'js'], function() 
 
 	var buildCss = gulp.src([
 		'app/css/main.min.css',
+		'app/css/normalize.css',
 		]).pipe(gulp.dest('dist/css'));
 
 	var buildJs = gulp.src([
@@ -117,25 +115,6 @@ gulp.task('build', ['removedist', 'imagemin', 'html', 'sass', 'js'], function() 
 		]).pipe(gulp.dest('dist/json'));
 
 });
-
-// gulp.task('deploy', function() {
-
-// 	var conn = ftp.create({
-// 		host:      'hostname.com',
-// 		user:      'username',
-// 		password:  'userpassword',
-// 		parallel:  10,
-// 		log: gutil.log
-// 	});
-
-// 	var globs = [
-// 	'dist/**',
-// 	'dist/.htaccess',
-// 	];
-// 	return gulp.src(globs, {buffer: false})
-// 	.pipe(conn.dest('/path/to/folder/on/server'));
-
-// });
 
 gulp.task('removedist', function() { return del.sync('dist'); });
 gulp.task('clearcache', function () { return cache.clearAll(); });

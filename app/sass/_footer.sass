@@ -1,6 +1,8 @@
 .footer
     background-color: $color-black
     padding: 30px 100px 20px
+    width: 100%
+    max-width: 1400px
 
     &__partners
         display: flex
@@ -29,7 +31,9 @@
             top: 7px
 
         &:before
-            left: 540px
+            // left: 540px
+            left: calc(50% - 60px)
 
         &:after
-            left: 625px
+            // left: 625px
+            left: calc(50% + 25px)

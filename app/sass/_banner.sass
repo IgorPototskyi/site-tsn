@@ -1,9 +1,11 @@
-.s-banner
-    // padding: 20px 0 20px 120px
-    padding: 20px 430px 0 0
+.banner
+    padding-top: 20px
     background-color: $color-white
 
-    .banner-cont
+    &__wrapper
+        width: calc(100% - 430px)
+
+    &__cont
         display: block
         position: relative
         width: 730px
@@ -11,18 +13,13 @@
         overflow: hidden
         margin: 0 auto
 
-    .banner-iframe
+    &__iframe
         display: block
-        // position: relative
-        // width: 730px
-        // height: 92px
-        // overflow: hidden
         border: 1px solid #b27f7f
-        // margin: 0 auto
         width: 100%
         height: 100%
 
-    .banner-img
+    &__img
         position: absolute
         width: 5px
         height: 5px

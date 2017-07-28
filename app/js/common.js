@@ -12,11 +12,9 @@ $(function() {
     initSlider();
 
     function initSlider() {
-        var $sliderCont = $('<div>').addClass('slider').appendTo('.header');
+        var $sliderCont = $('.slider');
 
-        // $.getJSON('../json/slider.json', function(data) {
         $.getJSON('json/slider.json', function(data) {
-            
             var slides = data.slice();
             if (slides.length) {
                 parseSlides(slides, $sliderCont);
@@ -28,38 +26,30 @@ $(function() {
     function parseSlides(slides, $sliderCont) {
         var $item,
             $itemLink,
-            $sliderNav = $('<ul>').addClass('slider__nav');
+            $itemSection,
+            $sliderNav = $('.slider__nav');
 
         slides.forEach(function(element, i) {
-            $item = $('<div>').addClass('slider__slide');
-
-            $itemLink = $('<a>').addClass('slider__link')
-                                .attr({'href' : element.link})
-                                .appendTo($item);
-
+            $item = $('#sliderSlideId').clone()
+                                       .removeAttr("id")
+                                       .removeAttr("style");
+            $itemLink = $item.find('.slider__link').attr({'href' : element.link});
+        
             if (element.videoSrc) {
-                var $itemVideo = $('<video>').addClass('slider__video')
-                                             .attr({"autoplay" : true, "loop" : true, "muted" : true})
-                                             .appendTo($itemLink);
-
-                $('<source>').attr({"src" : element.videoSrc, "type" : element.videoType})
-                             .appendTo($itemVideo);
-            } else $itemLink.css({"background-image" : "url('" + element.imageUrl + "')"});
+                $item.find(".slider__video").removeAttr("style");
+                $item.find(".slider__video-src").attr({"src" : element.videoSrc, 
+                                                       "type" : element.videoType});
+            } else {
+                $itemLink.css({"background-image" : "url('" + element.imageUrl + "')"});
+                $item.find(".slider__video").remove();
+            }
             
-            $('<h3>').addClass('slider__title')
-                     .html(element.title)
-                     .appendTo($itemLink);
+            $item.find(".slider__title").html(element.title);
 
-            var $itemDate = $('<div>').addClass('slider__date').appendTo($itemLink);
-            var $itemSection = $('<span>').addClass('slider__section')
-                                          .html(element.section)
-                                          .appendTo($itemDate);
-
+            $itemSection = $item.find(".slider__section").html(element.section);
             if (element.section === "ТСН День") $itemSection.addClass('slider__section--imp');
 
-            $('<span>').addClass('slider__datetime')
-                       .html(element.datetime)
-                       .appendTo($itemDate);
+            $item.find(".slider__datetime").html(element.datetime);
 
             $item.appendTo($sliderCont);
 
@@ -68,7 +58,7 @@ $(function() {
                      .appendTo($sliderNav);
         }, this);
 
-        $sliderNav.appendTo($sliderCont);
+        $sliderCont.find("#sliderSlideId").remove();
     }
 
     function renderSlides($sliderCont) {
@@ -95,7 +85,6 @@ $(function() {
 
             if (video.length > 0)  video.get(0).currentTime = 0;
             currentPos = sliderPos;
-            
         }
     });
 
@@ -129,18 +118,17 @@ $(function() {
 
     // ----- Navigation search & share-----
 
-    var topNavSearch = $('.top-nav__search');
+    var topNavSearch = $('.top-nav__search-btn');
     var soc = $('.social');
 
     topNavSearch.on('click', function() {
-        soc.hide(300);
+        soc.hide(200);
         $(this).toggleClass('top-nav__search--big');
-        
     });
 
     $('.top-nav__share-btn').on('click', function() {
         topNavSearch.removeClass('top-nav__search--big');
-        soc.toggle(300);
+        soc.toggle(200);
     });
 
     // ----- News header -----
@@ -156,10 +144,9 @@ $(function() {
     initNews();
 
     function initNews() {
-        var $newsCont = $('<div>', {class : "news__container"}).appendTo(".news");
+        var $newsCont = $(".news__container");
 
         $.getJSON('json/news.json', function(data) {
-        // $.getJSON('../json/news.json', function(data) {
             var news = data.slice();
             if (news.length) {
                 renderNews(news, $newsCont);
@@ -170,44 +157,35 @@ $(function() {
     function renderNews(news, $newsCont) {
         var $item,
             $itemCont,
-            $itemLink,
-            $itemDescr,
+            $itemViews,
+            $itemComments,
             $itemSection;
 
         news.forEach(function(element) {
-            $item = $('<div>').addClass('news__item');
-            $itemLink = $('<a>').addClass('news__item-link').attr('href', element.link);
-            $itemCont = $('<div>').addClass('news__item-cont');
-            $itemSection = $('<a>').addClass('news__item-section')
-                                   .attr('href', element.sectionLink)
-                                   .html(element.section);
 
-            $('<img>').addClass('news__item-img')
-                      .attr({'src': element.imageUrl, 
-                             'alt': element.alt})
-                      .appendTo($itemCont);
+            $item = $('#newsItemId').clone()
+                                    .removeAttr('id')
+                                    .removeAttr('style');
+            $itemCont = $item.find('.news__item-cont');
+            $itemViews = $item.find('.news__item-views');
+            $itemComments = $item.find('.news__item-comments');
+            $itemSection = $item.find('.news__item-section');
 
-            if (element.videoSrc) {
+            $item.find('.news__item-link').attr('href', element.link);
+            $item.find('.news__item-img').attr({'src': element.imageUrl, 
+                                                'alt': element.alt});
+            $item.find('.news__item-title').text(element.title);
+
+             if (element.videoSrc) {
                 $itemCont.addClass('news__item-cont--video');
                 $('<div>').addClass('news__item-shade').appendTo($itemCont);
                 $('<i>').addClass('fa fa-play-circle-o news__icon-play').appendTo($itemCont);
                 $('<i>').addClass('fa fa-share-square-o news__icon-share').appendTo($itemCont);
             }
 
-            $itemCont.appendTo($itemLink);
-            $('<h4>').addClass('news__item-title').text(element.title).appendTo($itemLink);
-
-            $itemLink.appendTo($item);
-
-            $itemDescr = $('<div>').addClass('news__item-descr');
-
-            $('<span>').addClass('news__item-views')
-                       .html('<i class="fa fa-eye"></i>' + element.views)
-                       .appendTo($itemDescr);
-            
-            $('<span>').addClass('news__item-comments')
-                       .html('<i class="fa fa-comment-o"></i>' + element.comments)
-                       .appendTo($itemDescr);
+            $itemViews.html($itemViews.html() + element.views);
+            $itemComments.html($itemComments.html() + element.comments);
+            $itemSection.attr('href', element.sectionLink).html(element.section);
 
             switch (element.section) {
                 case "Світ" : $itemSection.addClass('section-world'); break;
@@ -216,23 +194,13 @@ $(function() {
                 case "Гроші" : $itemSection.addClass('section-money'); break;
             }
 
-            $itemSection.appendTo($itemDescr);
-            $('<span>').addClass('news__item-datetime')
-                       .html(element.datetime)
-                       .appendTo($itemDescr);
+            $item.find('.news__item-datetime').text(element.datetime);
 
-            $itemDescr.appendTo($item);
             $item.appendTo($newsCont);
-
         }, this);
-
-        var $newsVideo = $('<div>').addClass('news__video').appendTo($newsCont);
-        $('<i>').addClass('fa fa-play news__video-play').appendTo($newsVideo);
-        $('<i>').addClass('fa fa-times news__video-close').appendTo($newsVideo);
         
+        $('.news__video').css('left', topNav.position().left + 20);
     }
-
-    $('.news__video').css('left', topNav.position().left + 20);
 
     $('body').on('click', '.news__icon-share', function(e) {
         e.preventDefault(); 
@@ -266,10 +234,9 @@ $(function() {
     initGallery();
     
     function initGallery() {
-        var $photosCont = $('<div>', {class : "photos__cont"}).appendTo(".photos");
+        var $photosCont = $(".photos__cont");
 
         $.getJSON('json/photos.json', function(data) {
-        // $.getJSON('../json/photos.json', function(data) {
             photos = data.slice();
             if (photos.length) {
                 renderPhotos(photos, $photosCont);
@@ -285,30 +252,26 @@ $(function() {
     }
 
     function renderPhotos(photos, $photosCont) {
-        $('<div>').addClass('photos__item-sizer').appendTo($photosCont);
-        $('<div>').addClass('photos__gutter-sizer').appendTo($photosCont);
         var $item;
 
         photos.forEach(function(element, i) {
-            $item = $('<div>').addClass('photos__item')
-                              .css({"background-image":"url(" + element.photosUrl[0] + ")",
-                                    "background-position":element.photoPosition});
+            $item = $('#photosItemId').clone()
+                                      .removeAttr('id')
+                                      .removeAttr("style")
+                                      .css({"background-image":"url(" + element.photosUrl[0] + ")",
+                                            "background-position":element.photoPosition});
 
             if (element.doubleWidth === "true") $item.addClass('photos__item--width2');
             if (element.doubleHeight === "true") $item.addClass('photos__item--height2');
 
             if (element.doubleHeight === "true" || element.doubleWidth === "true") {
-                var $descr = element.description;
-                var $photosDescr = $('<div>').addClass('photos__descr');
-                var $photosTitle = $('<div>').addClass('photos__title');
+                var descr = element.description;
 
-                if ($descr.length > 50) $descr = $descr.slice(0, 51) + "...";
+                if (descr.length > 50) descr = descr.slice(0, 51) + "...";
+                $item.find('.photos__title').html(descr);
 
-                $photosTitle.html($descr).appendTo($photosDescr);
-                $photosDescr.appendTo($item);
-            }
+            } else $item.find('.photos__descr').remove();
 
-            $('<i>').addClass('fa fa-share-square-o photos__open').appendTo($item);
             $item.attr("data-pos", i).appendTo($photosCont);
         }, this);
     }
@@ -364,10 +327,9 @@ $(function() {
     initAside();
 
     function initAside() {
-        var $asideCont = $('<div>', {class : "aside__content"}).appendTo(".aside");
+        var $asideCont = $(".aside__news");
 
         $.getJSON('json/aside.json', function(data) {
-        // $.getJSON('../json/aside.json', function(data) {
             var news = data.slice();
             if (news.length) {
                 renderAside(news, $asideCont);
@@ -376,71 +338,72 @@ $(function() {
     }
 
     function renderAside(news, $asideCont) {
-        $('<h2>').addClass('aside__title')
-                 .html('Останні новини')
-                 .appendTo($asideCont);
-
         var $item,
-            $itemLink;
+            $itemLink,
+            $asideBanner;
 
         news.forEach(function(element, i) {
             
             if (element.banner === "true") {
-                var $asideBanner = $('<div>').addClass('aside__banner');
-                var $asideBannerLink = $('<a>').addClass('aside__banner-link')
-                                               .attr({"href" : element.link});
-                
-                $('<img>').attr({"src" : element.imageUrl, "alt" : element.alt })
-                          .appendTo($asideBannerLink);
-
-                $asideBannerLink.appendTo($asideBanner);
+                $asideBanner = $('#asideBannerId').clone()
+                                                  .removeAttr('id')
+                                                  .removeAttr('style');
+                $asideBanner.find('.aside__banner-link').attr({"href" : element.link});
+                $asideBanner.find('.aside__banner-img').attr({"src" : element.imageUrl, 
+                                                              "alt" : element.alt });
                 $asideBanner.appendTo($asideCont);
-               
             } else {
-                $item  = $('<div>').addClass('aside__item');
-                $itemLink = $('<a>').addClass('aside__link')
-                                    .attr('href', element.link);
+                $item = $('#asideItemId').clone()
+                                         .removeAttr('id')
+                                         .removeAttr('style');
+                $itemLink = $item.find('.aside__link').attr('href', element.link);
 
                 if (element.isImportant === "true") $itemLink.addClass('aside__link--imp');
 
                 if (element.imageUrl) {
-                    var $imgCont = $('<div>').addClass('aside__img-cont');
-                    $('<img>').addClass('aside__img')
-                            .attr({"src" : element.imageUrl, "alt" : element.alt})
-                            .appendTo($imgCont);
+                    $item.find('.aside__img').attr({"src" : element.imageUrl, 
+                                                    "alt" : element.alt});
 
-                    if (element.videoTime) {
-                        var $asideVideo = $('<div>').addClass('aside__video')
-                                                    .html('<i class="fa fa-play-circle-o"></i>Видео')
-                                                    .appendTo($imgCont);
+                    if (element.videoTime) $item.find('.aside__video-time').html(element.videoTime);
+                    else $item.find(".aside__video").remove();
 
-                        $('<span>').addClass('aside__video-time')
-                                .html(element.videoTime)
-                                .appendTo($asideVideo);
-                    }
-                    $imgCont.appendTo($itemLink)
-                }
-
-                $('<span>').html(element.title).appendTo($itemLink);
-                $itemLink.appendTo($item);
-
-                $('<div>').addClass('aside__datetime')
-                        .html(element.datetime)
-                        .appendTo($item);
-
+                } else $item.find(".aside__img-cont").remove();
+                
+                $item.find('.aside__item-title').html(element.title);
+                $item.find('.aside__datetime').html(element.datetime);
+                        
                 $item.appendTo($asideCont);
             }
-            
         }, this);
+    }  
 
-        var $asideLoad = $('<div>').addClass('aside__load').appendTo($asideCont);
-        $('<a>').addClass('aside__load-link')
-                .attr('href' , '#')
-                .html('Завантажити ще')
-                .appendTo($asideLoad);
-        $('<i>').addClass('fa fa-download').appendTo($asideLoad);
+    // ----- Main navigation -----
+
+    function setMenuItems() {
+        var $mainNavList = $('.main-nav__list');
+        var $aside = $('.aside');
+        var $sublist = $('.main-nav__sublist');
+        var $mainNavListItems;
+        var $currentItem;
+        
+
+        while ($mainNavList.outerWidth() + 50 > $aside.position().left) {
+            $mainNavListItems = $mainNavList.children();
+            $currentItem = $mainNavListItems.eq($mainNavListItems.length - 2);
+
+            $currentItem.removeClass()
+                        .addClass('main-nav__subitem')
+                        .prependTo($sublist);
+
+            $currentItem.find('.main-nav__link')
+                        .removeClass()
+                        .addClass('main-nav__sublink');
+        }
     }
-    
+    setMenuItems();
+
+    $(window).on('resize', setMenuItems);
+
 });
 
 // ----- Preloader -----

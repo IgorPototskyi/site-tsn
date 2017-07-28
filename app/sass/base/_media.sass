@@ -1,55 +1,77 @@
 @import "vars"
 
-/*==========  Desktop First  ==========*/
-
-/* Large Devices, Wide Screens */
 @media only screen and (max-width : 1200px)
-	/**/
+	.top-nav
+		&__search-btn.top-nav__search--big
+			width: 250px
 
+	.news
+		padding-left: 40px
 
-/* Medium Devices, Desktops */
-@media only screen and (max-width : 992px)
-	/**/
+		&__wrapper
+        	width: calc(100% - 370px)
 
+		&__container
+        	justify-content: space-around
 
-/* Small Devices, Tablets */
-@media only screen and (max-width : 768px)
-	/**/
+	.photos
+		padding-left: 40px
 
+		&__wrapper
+        	width: calc(100% - 370px)
 
-/* Extra Small Devices, Phones */
-@media only screen and (max-width : 480px)
-	/**/
+		&__descr
+			padding: 7px 10px
 
+	.banner
+		&__wrapper
+        	width: calc(100% - 340px)
 
-/* Custom, iPhone Retina */
-@media only screen and (max-width : 320px)
-	/**/
+	.aside
+		width: 300px
+		right: 40px
 
+		&__block
+        	width: 280px
 
-/*==========  Mobile First  ==========*/
-
-/* Custom, iPhone Retina */
-@media only screen and (min-width : 320px)
-	/**/
-
-
-/* Extra Small Devices, Phones */
-@media only screen and (min-width : 480px)
-	/**/
-
-
-/* Small Devices, Tablets */
-@media only screen and (min-width : 768px)
-	/**/
-
+	.footer
+		padding: 30px 50px 20px
 
 /* Medium Devices, Desktops */
-@media only screen and (min-width : 992px)
-	/**/
+@media only screen and (max-width : 990px)
+	.news
+		padding-left: 20px
+
+		&__wrapper
+        	width: calc(100% - 290px)
+
+	.photos
+		padding-left: 20px
+
+		&__wrapper
+        	width: calc(100% - 290px)
+
+	.aside
+		width: 250px
+		right: 20px
+
+		&__block
+        	width: 230px
+		
+		&__banner
+			display: none
 
 
-/* Large Devices, Wide Screens */
-@media only screen and (min-width : 1200px)
-	/**/
+// /* Small Devices, Tablets */
+// @media only screen and (max-width : 768px)
+// 	/**/
 
+
+// /* Extra Small Devices, Phones */
+// @media only screen and (max-width : 480px)
+// 	/**/
+
+
+// /* Custom, iPhone Retina */
+// @media only screen and (max-width : 320px)
+// 	/**/

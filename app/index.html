@@ -11,6 +11,7 @@
 	<meta property="og:image" content="path/to/image.jpg">
 	<link rel="shortcut icon" href="img/favicon/favicon.png" type="image/x-icon">
 	
+	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/main.min.css">
 
 </head>
@@ -24,7 +25,24 @@
 		    </div>
 		</div>
 		<section class="header">
+		    <div class="slider">
 		
+		        <div class="slider__slide" id="sliderSlideId" style="display: none;">
+		            <a href="#" class="slider__link">
+		                <video class="slider__video" autoplay loop muted style="display: none;">
+		                    <source class="slider__video-src">
+		                </video>
+		                <h3 class="slider__title"></h3>
+		                <div class="slider__date">
+		                    <span class="slider__section"></span>
+		                    <span class="slider__datetime"></span>
+		                </div>
+		            </a>
+		        </div>
+		
+		        <ul class="slider__nav"></ul>
+		
+		    </div>
 		</section>
 		<nav class="top-nav">
 		    <img src="img/logo.png" alt="tsn" class="top-nav__logo">
@@ -47,25 +65,38 @@
 		        <span class="top-nav__dol-val">26.45</span>
 		    </div>
 		
-		    <input class="top-nav__search" type="search" value="">
+		    <form class="top-nav__search-form">
+		        <input class="top-nav__search-btn" type="search" value="">
+		    </form>
+		    
 		
 		    <div class="top-nav__share">
 		        <nav class="social">
 		            <ul class="social__list">
 		                <li class="social__item">
-		                    <a class="social__link social__link--vk" href="https://vkontakte.com/"><i class="fa fa-vk"></i></a>
+		                    <a class="social__link social__link--vk" href="https://vkontakte.com/" target="_blank" rel="nofollow">
+		                        <i class="fa fa-vk"></i>
+		                    </a>
 		                </li>
 		                <li class="social__item">
-		                    <a class="social__link social__link--facebook" href="https://facebook.com/"><i class="fa fa-facebook"></i></a>
+		                    <a class="social__link social__link--facebook" href="https://facebook.com/" target="_blank" rel="nofollow">
+		                        <i class="fa fa-facebook"></i>
+		                    </a>
 		                </li>
 		                <li class="social__item">
-		                    <a class="social__link social__link--twitter" href="https://twitter.com"><i class="fa fa-twitter"></i></a>
+		                    <a class="social__link social__link--twitter" href="https://twitter.com" target="_blank" rel="nofollow">
+		                        <i class="fa fa-twitter"></i>
+		                    </a>
 		                </li>
 		                <li class="social__item">
-		                    <a class="social__link social__link--odno" href="https://odnoklassniki.com"><i class="fa fa-odnoklassniki"></a></i>
+		                    <a class="social__link social__link--odno" href="https://odnoklassniki.com" target="_blank" rel="nofollow">
+		                        <i class="fa fa-odnoklassniki"></i>
+		                    </a>
 		                </li>
 		                <li class="social__item">
-		                    <a class="social__link social__link--google" href="https://plus.google.com"><i class="fa fa-google-plus-official"></a></i>
+		                    <a class="social__link social__link--google" href="https://plus.google.com" target="_blank" rel="nofollow">
+		                        <i class="fa fa-google-plus-official"></i>
+		                    </a>
 		                </li>
 		            </ul>
 				</nav>
@@ -161,66 +192,165 @@
 		        </li>
 		    </ul>
 		</nav>
+
+		<!-- <div class="wrapper-inner"> -->
 		<section class="news">
-		    <nav class="news__nav">
-		        <ul class="news__nav-list">
-		            <li class="news__nav-item">
-		                <a href="#" class="news__nav-link active">Головні новини</a>
-		            </li>
-		            <li class="news__nav-item">
-		                <a href="#" class="news__nav-link">Популярні</a>
-		            </li>
-		            <li class="news__nav-item">
-		                <a href="#" class="news__nav-link">Коментують</a>
-		            </li>
-		        </ul>
-		    </nav>
+		    <div class="news__wrapper">
+		        <nav class="news__nav">
+		            <ul class="news__nav-list">
+		                <li class="news__nav-item">
+		                    <a href="#" class="news__nav-link active">Головні новини</a>
+		                </li>
+		                <li class="news__nav-item">
+		                    <a href="#" class="news__nav-link">Популярні</a>
+		                </li>
+		                <li class="news__nav-item">
+		                    <a href="#" class="news__nav-link">Коментують</a>
+		                </li>
+		            </ul>
+		        </nav>
+		
+		        <div class="news__container">
+		            <div class="news__item" id="newsItemId" style="display:none;">
+		                <a href="#" class="news__item-link">
+		                    <div class="news__item-cont">
+		                        <img class="news__item-img">
+		                    </div>
+		                    <h4 class="news__item-title"></h4>
+		                </a>
+		                <div class="news__item-descr">
+		                    <span class="news__item-views"><i class="fa fa-eye"></i></span>
+		                    <span class="news__item-comments"><i class="fa fa-comment-o"></i></span>
+		                    <a href="#" class="news__item-section"></a>
+		                    <span class="news__item-datetime"></span>
+		                </div>
+		            </div>
+		        </div>
+		
+		        <div class="news__video">
+		            <i class="fa fa-play news__video-play"></i>
+		            <i class="fa fa-times news__video-close"></i>
+		        </div>
+		
+		    </div>
 		
 		</section>
 		<section class="photos">
-		    <h2 class="photos__header">Фото репортаж</h2>
+		    <div class="photos__wrapper">
+		        <h2 class="photos__header">Фото репортаж</h2>
+		        <div class="photos__cont">
+		            <div class="photos__item-sizer"></div>
+		            <div class="photos__gutter-sizer"></div>
+		
+		            <div class="photos__item" id="photosItemId" style="display: none;">
+		                <div class="photos__descr">
+		                    <div class="photos__title"></div>
+		                </div>
+		                <i class="fa fa-share-square-o photos__open"></i>
+		            </div>
+		        </div>
+		    </div>
 		</section>
-		<section class="s-banner">
-		    <div class="banner-cont">
-		        <iframe class="banner-iframe" src="http://player.hosting.1plus1.ua/tests/fe/adIframe.html"></iframe>
-		        
-		        <img class="banner-img banner-img--lt" src="img/banner/lt.jpg" alt="lt">
-		        <img class="banner-img banner-img--rt" src="img/banner/rt.jpg" alt="rt">
-		        <img class="banner-img banner-img--lb" src="img/banner/lb.jpg" alt="lb">
-		        <img class="banner-img banner-img--rb" src="img/banner/rb.jpg" alt="rb">
+		<section class="banner">
+		    <div class="banner__wrapper">
+		        <div class="banner__cont">
+		            <iframe class="banner__iframe" src="http://player.hosting.1plus1.ua/tests/fe/adIframe.html"></iframe>
+		            
+		            <img class="banner__img banner__img--lt" src="img/banner/lt.jpg" alt="lt">
+		            <img class="banner__img banner__img--rt" src="img/banner/rt.jpg" alt="rt">
+		            <img class="banner__img banner__img--lb" src="img/banner/lb.jpg" alt="lb">
+		            <img class="banner__img banner__img--rb" src="img/banner/rb.jpg" alt="rb">
+		        </div>
 		    </div>
 		</section>
 		<section class="news news--second">
-		   
+		   <div class="news__wrapper">
+		        
+		        <div class="news__container">
+		            <div class="news__item" id="newsItemId" style="display:none;">
+		                <a href="#" class="news__item-link">
+		                    <div class="news__item-cont">
+		                        <img class="news__item-img">
+		                    </div>
+		                    <h4 class="news__item-title"></h4>
+		                </a>
+		                <div class="news__item-descr">
+		                    <span class="news__item-views"><i class="fa fa-eye"></i></span>
+		                    <span class="news__item-comments"><i class="fa fa-comment-o"></i></span>
+		                    <a href="#" class="news__item-section"></a>
+		                    <span class="news__item-datetime"></span>
+		                </div>
+		            </div>
+		        </div>
+		
+		        <div class="news__video">
+		            <i class="fa fa-play news__video-play"></i>
+		            <i class="fa fa-times news__video-close"></i>
+		        </div>
+		
+		    </div>
 		</section>
+		<!-- </div> -->
+
 		<aside class="aside">
 		    <div class="aside__block"></div>
 		    <div class="aside__block2"></div>
+		
+		    <div class="aside__content">
+		        <h2 class="aside__title">Останні новини</h2>
+		
+		        <div class="aside__news">
+		
+		            <div class="aside__item" id="asideItemId" style="display: none;">
+		                <a class="aside__link" href="#">
+		                    <div class="aside__img-cont">
+		                        <img class="aside__img">
+		                        <div class="aside__video">
+		                            <i class="fa fa-play-circle-o"></i>Видео<span class="aside__video-time"></span>
+		                        </div>
+		                    </div>
+		                    <span class="aside__item-title"></span>
+		                </a>
+		                <div class="aside__datetime"></div>
+		            </div>
+		
+		            <div class="aside__banner" id="asideBannerId" style="display: none;">
+		                <a href="#" class="aside__banner-link">
+		                    <img class="aside__banner-img">
+		                </a>
+		            </div>
+		        </div>
+		
+		        <div class="aside__load">
+		            <a href="#" class="aside__load-link">Завантажити ще</a> 
+		            <i class="fa fa-download"></i>
+		        </div>
+		    </div>
 		</aside>
 		<footer class="footer">
 		    <div class="footer__partners">
-		        <a href="#">
+		        <a href="#" target="_blank" rel="nofollow">
 		            <img src="img/partners/one-plus-one.png" alt="one plus one" class="footer__img">
 		        </a>
-		        <a href="#">
+		        <a href="#" target="_blank" rel="nofollow">
 		            <img src="img/partners/tet.png" alt="tet" class="footer__img">
 		        </a>
-		        <a href="#">
+		        <a href="#" target="_blank" rel="nofollow">
 		            <img src="img/partners/two-plus-two.png" alt="two plus two" class="footer__img">
 		        </a>
-		        <a href="#">
+		        <a href="#" target="_blank" rel="nofollow">
 		            <img src="img/partners/plus-plus.png" alt="plus plus" class="footer__img">
 		        </a>
-		        <a href="#">
+		        <a href="#" target="_blank" rel="nofollow">
 		            <img src="img/partners/one-plus-one-int.png" alt="one plus one international" class="footer__img">
 		        </a>
-		        <a href="#">
+		        <a href="#" target="_blank" rel="nofollow">
 		            <img src="img/partners/bigudi.png" alt="bigudi" class="footer__img">
 		        </a>
-		        <a href="#">
+		        <a href="#" target="_blank" rel="nofollow">
 		            <img src="img/partners/unian.png" alt="unian" class="footer__img">
 		        </a>
-		        <a href="#">
+		        <a href="#" target="_blank" rel="nofollow">
 		            <img src="img/partners/ovva.png" alt="ovva" class="footer__img">
 		        </a>
 		    </div>

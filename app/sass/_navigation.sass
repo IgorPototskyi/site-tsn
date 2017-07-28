@@ -1,7 +1,9 @@
 .top-nav
     position: fixed
     top: 0
-    width: 1400px
+    width: 100%
+    max-width: 1400px
+    min-width: 990px
     height: 50px
     display: flex
     background: linear-gradient(rgba($color-black, 1), rgba($color-black, 0))
@@ -22,7 +24,7 @@
         .top-nav__date, .top-nav__weather, .top-nav__currency
             display: none
 
-        .top-nav__search
+        .top-nav__search-btn
             background: url('../img/search/search-black.png') no-repeat 6px 6px
 
             &:hover
@@ -95,11 +97,16 @@
 
     &__dol-val
         margin-right: 30px
-
-    &__search
+    
+    &__search-form
         margin: auto 15px auto auto
-        width: 36px
+        // width: 350px
         height: 36px
+
+    &__search-btn
+        width: 36px
+        height: 100%
+        float: right
         background: url('../img/search/search-white.png') no-repeat 6px 6px
         outline: none
         border: none
@@ -162,7 +169,7 @@
 
     &__item
         display: inline-block
-        margin: 0 15px
+        margin: 0 8px
 
     &__link
         display: inline-block
@@ -194,7 +201,8 @@
     height: 50px
 
     &__list
-        width: 920px
+        // width: 920px
+        display: inline-block
         margin: 0 0 0 50px
         padding: 0
         height: 50px
